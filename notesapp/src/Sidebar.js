@@ -1,25 +1,13 @@
-function Sidebar ( {notes}){
+import NoteList from './NoteList' ;
+function Sidebar ( {notes, onAddNotes}){
     return (
        <div className="app-sidebar">
             <div className="app-sidebar-header">
                 <h1>Notes</h1>
-                <button>Add</button>
+                <button onClick={onAddNotes}>Add</button>
             </div>
             {/*container with list of notes */}
-            <div className="app-sidebar-notes">
-                {/* individual note */}
-                <div className="app-sidebar-note">
-                    <div className="sidebar-note-title">
-                        <strong>TITLE</strong>
-                        <button>DELETE </button>
-                    </div>
-
-                    <p>Note Preview</p>
-
-                    <small className="note-meta">Last modified [date]</small>
-                </div>
-
-            </div>
+            <NoteList notes={notes}/>
        </div>
     )
 } ;
