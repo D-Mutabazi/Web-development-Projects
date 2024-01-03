@@ -22,11 +22,20 @@ function App() {
     } ;
 
     setNotes([newNote, ...notes] ) ; //append new note to existing notes array
+  } ;
 
+  /**
+   * 
+   * @param {param0} idToDelete - note to be deleted id
+   * iterate through the notes, a note that has the same id as the idToDelete is deleted and the rest of the notes is kept
+   * based on how the esx function FILTER works
+   */
+  const onDeleteNote = (idToDelete) =>{
+    setNotes(notes.filter((note)=> note.id !== idToDelete))
   } ;
   return (
     <div className="App">
-      <Sidebar notes={notes} onAddNotes={onAddNotes} />
+      <Sidebar notes={notes} onAddNotes={onAddNotes} onDeleteNote={onDeleteNote} />
 
       <Main/>
     

@@ -1,5 +1,5 @@
 import NoteList from './NoteList' ;
-function Sidebar ( {notes, onAddNotes}){
+function Sidebar ( {notes, onAddNotes, onDeleteNote}){
     return (
        <div className="app-sidebar">
             <div className="app-sidebar-header">
@@ -7,7 +7,7 @@ function Sidebar ( {notes, onAddNotes}){
                 <button onClick={onAddNotes}>Add</button>
             </div>
             {/*container with list of notes */}
-            <NoteList notes={notes}/>
+            <NoteList notes={notes} onDeleteNote={onDeleteNote}/>
        </div>
     )
 } ;
