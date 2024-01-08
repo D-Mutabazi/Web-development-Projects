@@ -3,12 +3,15 @@ import Sidebar from './Sidebar' ;
 import Main from './Main'
 import { useState } from 'react';
 import uuid from 'react-uuid' ;
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 // all information and states are to be stored in App because of the hierachy, if stored in any other component,
 // it would may not be accessible to others
 
 
 function App() {
   const [notes, setNotes] = useState([]) ; //list of notes stored in array
+  const [activeNote, setActiveNote] = useState(false) ; //Note clicked on is set to active and its state is saved
+
   
   /**
    * will add a note object to the notes array/state
@@ -33,11 +36,16 @@ function App() {
   const onDeleteNote = (idToDelete) =>{
     setNotes(notes.filter((note)=> note.id !== idToDelete))
   } ;
+
+
   return (
     <div className="App">
-      <Sidebar notes={notes} onAddNotes={onAddNotes} onDeleteNote={onDeleteNote} />
+      <Sidebar notes={notes} 
+               onAddNotes={onAddNotes} 
+               onDeleteNote={onDeleteNote} 
+      />
 
-      <Main/>
+      {/* <Main/> */}
     
     </div>
 
