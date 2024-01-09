@@ -4,6 +4,8 @@ import Main from './Main'
 import { useState } from 'react';
 import uuid from 'react-uuid' ;
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
+import Test from './Test' ;
 // all information and states are to be stored in App because of the hierachy, if stored in any other component,
 // it would may not be accessible to others
 
@@ -39,15 +41,26 @@ function App() {
 
 
   return (
-    <div className="App">
-      <Sidebar notes={notes} 
-               onAddNotes={onAddNotes} 
-               onDeleteNote={onDeleteNote} 
-      />
+    <Router>
+      <div className="App">
+        <Switch>
 
-      {/* <Main/> */}
-    
+          <Route exact path='/'>
+            <Sidebar notes={notes} 
+                onAddNotes={onAddNotes} 
+                onDeleteNote={onDeleteNote} 
+            />
+          </Route>
+
+          <Route path='/editNote'>
+            <Main/>
+          </Route>
+
+        </Switch>
     </div>
+
+    </Router>
+    
 
   );
 }

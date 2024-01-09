@@ -1,0 +1,3 @@
+Library Stack:
+- react uuid
+- CSS grid layout
