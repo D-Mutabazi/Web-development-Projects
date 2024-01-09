@@ -1,6 +1,7 @@
-function Note ( {note, onDeleteNote} ){
+function Note ( {note, onDeleteNote, activeNote, setActiveNote} ){
     return (
-        <div className="app-sidebar-note">
+        <div className= {`app-sidebar-note ${note.id === activeNote && "active"}`}
+        onClick={ () => setActiveNote(note.id)}>
             <div className="sidebar-note-title">
                 <strong>{note.title}</strong>
                

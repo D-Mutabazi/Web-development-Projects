@@ -48,7 +48,9 @@ function App() {
           <Route exact path='/'>
             <Sidebar notes={notes} 
                 onAddNotes={onAddNotes} 
-                onDeleteNote={onDeleteNote} 
+                onDeleteNote={onDeleteNote}
+                activeNote={activeNote}
+                setActiveNote={setActiveNote}
             />
           </Route>
 
