@@ -1,14 +1,28 @@
-function Main( {activeNote} ){
+import ReactMarkdown from 'react-markdown' ; 
+
+function Main( {activeNote, onUpdateNote} ){
     
+    const onEditField = (key, value) => {
+        onUpdateNote({
+            ...activeNote ,
+            [key] : value , //dynamic key value pair
+            lastModified: Date.now()  
+        }) ;
+    } ;
+
+
+    // if(!activeNote) return <div className="no-active-note">No note selected</div>
+
     return (
         <div className="app-main">
             <div className="app-main-note-edit">
-                <input type="text" id="title" autoFocus/>
-                <textarea id="id" placeholder="Write your notes here..."></textarea>
+                <input type="text" id="title" value={activeNote.title} onChange= {(e) => onEditField("title", e.target.value)} autoFocus/>
+                <textarea id="id" placeholder="Write your notes here..." value={activeNote.body} 
+                                  onChange= {(e) => onEditField("body", e.target.value)}></textarea>
             </div>
             <div className="app-main-note-preview">
                 <h1 className="preview-title">{ activeNote.title }</h1>
-                <div className="markdown-preview">{activeNote.body}</div>
+                <ReactMarkdown className="markdown-preview">{activeNote.body}</ReactMarkdown>
             </div>
         </div>
     ) ;

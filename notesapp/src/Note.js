@@ -4,9 +4,12 @@ function Note ( {note, onDeleteNote, activeNote, setActiveNote} ){
   
     const history  = useHistory() ;
 
+    /**
+     * Redirect to the edit-note route with the note id as a parameter
+     */
     const handleEditNote = () =>{
 
-        history.push(`/edit-note/${note.id}`)
+        history.push(`/edit-note/${note.id}`) //note to be edited sent to this route
     }
     return (
         <div className= {`app-sidebar-note ${note.id === activeNote && "active"}`}onClick={ () => setActiveNote(note.id)}>
@@ -18,7 +21,7 @@ function Note ( {note, onDeleteNote, activeNote, setActiveNote} ){
 
             </div>
 
-            <p>{note.body && note.body.substr(0,50)+ "..."}</p>
+            <p>{note.body && note.body.substr(0,25)+ "..."}</p>
 
             <div className="note-footer">
                 <small className="note-meta">Last Modified: {new Date(note.lastModified).toLocaleDateString("en-GB", {

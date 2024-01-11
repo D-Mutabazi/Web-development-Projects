@@ -1,7 +1,7 @@
 import './App.css';
 import Sidebar from './Sidebar' ;
 import Main from './Main'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import uuid from 'react-uuid' ;
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
@@ -10,10 +10,12 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 
 function App() {
-  const [notes, setNotes] = useState([]) ; //list of notes stored in array
+  const [notes, setNotes] = useState( localStorage.notes ? JSON.parse(localStorage.notes) : []) ; //list of notes stored in array
   const [activeNote, setActiveNote] = useState(false) ; //Note clicked on is set to active and its state is saved
 
-  
+  useEffect( () =>{
+    localStorage.setItem('notes', JSON.stringify(notes))
+  }, [notes]);
   /**
    * will add a note object to the notes array/state
    */
@@ -48,6 +50,23 @@ function App() {
     }
   }
 
+  /**
+   * updates the notes array with the current note that is being edited
+   * @param {*} updatedNoted to replace the note id that is the current active note
+   */
+  const onUpdateNote = (updatedNote) =>{
+
+    const onUpdatedNotesArray = notes.map((note) => {
+      if(note.id === activeNote){
+        return updatedNote ; // updates the information for the current active note 
+      };
+
+      return note ; 
+    }) ;
+
+    setNotes(onUpdatedNotesArray) ; //replace current note Array 
+
+  } ; 
   return (
     <Router>
       <div className="App">
@@ -63,7 +82,7 @@ function App() {
           </Route>
 
           <Route path='/edit-note/:id'>
-            <Main activeNote={getActiveNote()}/>
+            <Main activeNote={getActiveNote()} onUpdateNote={onUpdateNote}/>
           </Route>
 
         </Switch>

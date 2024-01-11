@@ -1,3 +1,10 @@
 Library Stack:
 - react uuid
 - CSS grid layout
+- useHistory
+- onChange
+- filter () function
+- map() function
+- useEffect() function
+- JSON 
+  - 
