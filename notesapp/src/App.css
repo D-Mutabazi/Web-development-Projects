@@ -18,18 +18,11 @@ body,
 }
 
 button {
-  background: none;
-  border: 0;
-  margin: 0;
-  padding: 0;
-  font-size: inherit;
-  font-family: inherit;
+  border-radius: 10px;
   cursor: pointer;
   color: #08c;
 }
-button:hover {
-  color: #04c;
-}
+
 
 
 
@@ -113,21 +106,17 @@ button:hover {
 /* NOTE EDITOR/PREVIEW (MAIN) STYLES */
 
 .app-main {
-  width: 70%;
+  /* width: 70%; */
   height: 100vh;
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  margin-left: auto;
 }
 .app-main-note-edit,
 .app-main-note-preview {
   height: 50vh;
-}
-
-.no-active-note {
-  width: 70%;
-  height: 100vh;
-  line-height: 100vh;
-  text-align: center;
-  font-size: 2rem;
-  color: #999;
 }
 
 /* Editing */
@@ -157,6 +146,8 @@ textarea {
   border-top: 1px solid #ddd;
   overflow-y: scroll;
   background: rgba(0, 0, 0, 0.02);
+  padding: 10px;
+
 }
 
 .preview-title {

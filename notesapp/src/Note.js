@@ -1,10 +1,20 @@
+import { useHistory } from 'react-router-dom' ;
+
 function Note ( {note, onDeleteNote, activeNote, setActiveNote} ){
+  
+    const history  = useHistory() ;
+
+    const handleEditNote = () =>{
+
+        history.push(`/edit-note/${note.id}`)
+    }
     return (
-        <div className= {`app-sidebar-note ${note.id === activeNote && "active"}`}
-        onClick={ () => setActiveNote(note.id)}>
+        <div className= {`app-sidebar-note ${note.id === activeNote && "active"}`}onClick={ () => setActiveNote(note.id)}>
+            {console.log(activeNote.title)}
             <div className="sidebar-note-title">
                 <strong>{note.title}</strong>
                
+                <button onClick = { handleEditNote }>EditNote</button>{/* Button to navigate to the edit-note route */}
 
             </div>
 

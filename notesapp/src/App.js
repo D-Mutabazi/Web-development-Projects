@@ -5,7 +5,6 @@ import { useState } from 'react';
 import uuid from 'react-uuid' ;
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import Test from './Test' ;
 // all information and states are to be stored in App because of the hierachy, if stored in any other component,
 // it would may not be accessible to others
 
@@ -39,6 +38,15 @@ function App() {
     setNotes(notes.filter((note)=> note.id !== idToDelete))
   } ;
 
+  /**
+   * get the information for the active note using its id returning the active note to be edited
+   * @returns current the active note (object)to be edited
+   */
+  const getActiveNote = () =>{
+    if(activeNote){
+      return notes.find((note) => note.id === activeNote); 
+    }
+  }
 
   return (
     <Router>
@@ -54,8 +62,8 @@ function App() {
             />
           </Route>
 
-          <Route path='/editNote'>
-            <Main/>
+          <Route path='/edit-note/:id'>
+            <Main activeNote={getActiveNote()}/>
           </Route>
 
         </Switch>
