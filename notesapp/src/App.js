@@ -12,6 +12,7 @@ function App() {
   const [notes, setNotes] = useState( localStorage.notes ? JSON.parse(localStorage.notes) : []) ; //list of notes stored in array
   const [activeNote, setActiveNote] = useState(false) ; //Note clicked on is set to active and its state is saved
 
+  console.log(notes)
   useEffect( () =>{
     localStorage.setItem('notes', JSON.stringify(notes))
   }, [notes]);
@@ -67,7 +68,7 @@ function App() {
 
   } ; 
 
-  const [searchText, setSearchText] = useState(' ') ;
+  const [searchText, setSearchText] = useState('') ;
   console.log(searchText) ;
 
   return (
@@ -76,7 +77,7 @@ function App() {
         <Switch>
 
           <Route exact path='/'>
-            <Sidebar notes={notes} 
+            <Sidebar notes={notes.filter((note)=>note.title.toLowerCase().includes(searchText))}
                 onAddNotes={onAddNotes} 
                 onDeleteNote={onDeleteNote}
                 activeNote={activeNote}

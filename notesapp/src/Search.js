@@ -6,7 +6,7 @@ function Search( {handleSearchNote } ){
         <div className ='search'>
             <MdSearch className='search-icon' size= '1.3em' ></MdSearch>
             <input id= 'searchText' onChange={(event) => 
-            // on each keystroke prop called
+            // on each keystroke prop called to store search text
             handleSearchNote(event.target.value)} 
             type='text' 
             placeholder='type to search...'/>
