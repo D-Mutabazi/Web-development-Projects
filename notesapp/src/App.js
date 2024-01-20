@@ -4,7 +4,6 @@ import Main from './Main'
 import { useEffect, useState } from 'react';
 import uuid from 'react-uuid' ;
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-
 // all information and states are to be stored in App because of the hierachy, if stored in any other component,
 // it would may not be accessible to others
 
@@ -67,6 +66,10 @@ function App() {
     setNotes(onUpdatedNotesArray) ; //replace current note Array 
 
   } ; 
+
+  const [searchText, setSearchText] = useState(' ') ;
+  console.log(searchText) ;
+
   return (
     <Router>
       <div className="App">
@@ -78,6 +81,8 @@ function App() {
                 onDeleteNote={onDeleteNote}
                 activeNote={activeNote}
                 setActiveNote={setActiveNote}
+
+                handleSearchNote = {setSearchText} 
             />
           </Route>
 

@@ -50,7 +50,7 @@ button {
 }
 
 .app-sidebar-notes {
-  max-height: calc(100vh - 78px);
+  max-height: calc(100vh - 150px);
   overflow-y: auto;
 
   display: grid; /*noteslist is a css grid container*/
@@ -159,4 +159,24 @@ textarea {
   padding: 0 25px 25px 25px;
   font-size: 1rem;
   line-height: 2rem;
+}
+
+/* search bar styling */
+.search{
+  display: flex ; 
+  align-items: center;
+  background-color: rgb(233,233,233); 
+  border-radius: 10px ; 
+  padding: 5px ;
+  margin-bottom: 1.5em ; 
+
+}
+
+.search input{
+  border: none ;
+  background-color: rgb(233,233, 233);
+}
+
+.search input:focus{
+  outline: none;
 }
